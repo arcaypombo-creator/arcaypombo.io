@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArcCell Mobile Repair</title>
+  <meta name="description" content="Fast, affordable phone and tablet repair: screens, batteries, charging ports, water damage. Same‑day service available." />
+  <style>
+    :root{
+      --bg:#0f172a;         /* slate-900 */
+      --card:#111827;       /* gray-900 */
+      --muted:#94a3b8;      /* slate-400 */
+      --text:#e5e7eb;       /* gray-200 */
+      --brand:#22d3ee;      /* cyan-400 */
+      --brand-2:#38bdf8;    /* sky-400 */
+      --accent:#a78bfa;     /* violet-400 */
+      --ok:#34d399;         /* emerald-400 */
+      --warn:#f59e0b;       /* amber-500 */
+      --danger:#fb7185;     /* rose-400 */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:radial-gradient(1200px 700px at 10% -10%, #0b1228 0%, var(--bg) 60%),
+                                         radial-gradient(1000px 600px at 120% -20%, #0a1830 0%, var(--bg) 50%);
+              color:var(--text);font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";}
+    a{color:var(--brand)}
+    header{
+      position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(15,23,42,.6);border-bottom:1px solid rgba(148,163,184,.15);
+      z-index:50
+    }
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .row{display:flex;gap:16px;align-items:center}
+    .between{justify-content:space-between}
+    .nav{padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.2px}
+    .brand .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));
+      display:grid;place-items:center;box-shadow:var(--shadow)}
+    .brand .logo svg{width:22px;height:22px;fill:white}
+    .menu a{margin:0 10px;text-decoration:none;color:var(--text);opacity:.85}
+    .menu a:hover{opacity:1}
+    .cta{padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#04121a;font-weight:700;border:0;cursor:pointer;box-shadow:var(--shadow)}
+    .cta.secondary{background:transparent;color:var(--text);border:1px solid rgba(148,163,184,.25)}
+
+    .hero{padding:72px 0 40px}
+    .hero h1{font-size:46px;line-height:1.1;margin:8px 0}
+    .hero p{color:var(--muted);max-width:680px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .badge{font-size:12px;border:1px solid rgba(148,163,184,.25);padding:6px 10px;border-radius:999px;color:var(--muted)}
+
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:28px 0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));
+      border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));
+      border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .panel h2{margin:0 0 12px}
+
+    .price{display:flex;align-items:baseline;gap:8px;margin:6px 0 12px}
+    .price .num{font-size:36px;font-weight:800;background:linear-gradient(135deg,var(--brand),var(--accent));
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    .fine{font-size:12px;color:var(--muted)}
+
+    .features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+    .feature{display:flex;gap:8px;align-items:flex-start}
+    .feature svg{min-width:18px;margin-top:2px}
+
+    form{display:grid;gap:12px}
+    label{font-size:14px;color:var(--muted)}
+    input,select,textarea{
+      width:100%;padding:10px 12px;border-radius:12px;border:1px solid rgba(148,163,184,.25);
+      background:#0b1224;color:var(--text)
+    }
+    textarea{min-height:92px}
+    .note{font-size:12px;color:var(--muted)}
+
+    .contact{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:16px
+    }
+
+    footer{margin:32px 0 40px;color:var(--muted);font-size:13px}
+
+    @media (max-width: 800px){
+      .grid-2{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="row between">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <!-- phone wrench icon -->
+            <svg viewBox="0 0 24 24" role="img" aria-label="ArcCell Logo">
+              <path d="M16 1a4 4 0 0 0 0 8c.7 0 1.36-.18 1.94-.5l1.56 1.56a2 2 0 0 1 0 2.83l-2.12 2.12a2 2 0 0 1-2.83 0l-.88-.88a1 1 0 0 0-1.24-.16c-1.86 1.1-3.98 1.83-6.22 2.13a1 1 0 0 1-1.1-.68l-.5-1.5a2 2 0 0 1 .45-2L6.5 8.5A6 6 0 0 1 8 2a6.1 6.1 0 0 1 3.9 1.46A4 4 0 0 0 16 1z" />
+            </svg>
+          </div>
+          <span>AR Cell Phone Repair</span>
+        </div>
+        <nav class="menu">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#book">Book</a>
+          <a href="#contact">Contact</a>
+          <button class="cta" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'});">Get a Quote</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="hero">
+      <div class="row" style="align-items:flex-start;gap:22px;flex-wrap:wrap">
+        <div style="flex:1 1 420px;min-width:300px">
+          <div class="badge">Same‑day repairs • Lifetime workmanship warranty</div>
+          <h1>Cracked screen? Dead battery? We fix it fast.</h1>
+          <p>Trusted local techs for phones, tablets, and wearables. Walk‑in or schedule online. Most screen and battery swaps done in under an hour.</p>
+          <div class="badges">
+            <span class="badge">iPhone • Samsung • Xiaomi • Oppo • Huawei • More</span>
+            <span class="badge">Data‑safe process</span>
+            <span class="badge">Genuine or premium‑aftermarket parts</span>
+          </div>
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="cta" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'});">Book Now</button>
+            <button class="cta secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});">View Pricing</button>
+          </div>
+        </div>
+        <div style="flex:1 1 380px;min-width:280px">
+          <div class="cards">
+            <div class="card">
+              <h3>Screen Replacement</h3>
+              <p>Shattered or unresponsive displays brought back to life with calibrated color and touch.</p>
+            </div>
+            <div class="card">
+              <h3>Battery & Charging</h3>
+              <p>Battery swaps, charging port cleaning/replacement, and fast‑charge diagnostics.</p>
+            </div>
+            <div class="card">
+              <h3>Water Damage</h3>
+              <p>Board‑level cleaning & corrosion treatment with ultrasonic restoration.</p>
+            </div>
+            <div class="card">
+              <h3>Data Rescue</h3>
+              <p>Broken device? We extract your photos, chats, and files securely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="grid-2">
+      <div class="panel">
+        <h2>Popular Repairs</h2>
+        <div class="features">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm5 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+            <div>
+              <strong>Glass & OLED</strong>
+              <div class="fine">Premium panels with True Tone / color calibration</div>
+            </div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 14H8v-2h5v2Zm3-4H8V8h8v4Z"/></svg>
+            <div>
+              <strong>Battery & Ports</strong>
+              <div class="fine">High‑cycle cells, port cleaning, USB‑C/Lightning repairs</div>
+            </div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 3 2 21h20L12 3Zm0 4.5L18.3 19H5.7L12 7.5Z"/></svg>
+            <div>
+              <strong>Back Glass & Frames</strong>
+              <div class="fine">Laser separation and clean re‑bonding</div>
+            </div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 4h16v12H5.17L4 17.17V4Zm2 2v8h12V6H6Zm-2 14h14v2H4v-2Z"/></svg>
+            <div>
+              <strong>Mic, Speaker, Camera</strong>
+              <div class="fine">Crystal‑clear audio & sharp optics restored</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="pricing">
+        <h2>Transparent Pricing</h2>
+        <div class="price"><span class="num">₱900–₱3,500</span><span>Battery</span></div>
+        <div class="price"><span class="num">₱1,200–₱8,500</span><span>Screen</span></div>
+        <div class="price"><span class="num">₱350–₱1,800</span><span>Charging Port</span></div>
+        <div class="fine">Prices vary by model & part quality. Ask for a free quote.</div>
+      </div>
+    </section>
+
+    <section id="book" class="grid-2" style="margin-top:18px">
+      <div class="panel">
+        <h2>Book a Repair</h2>
+        <form id="quoteForm">
+          <div>
+            <label for="name">Full Name</label>
+            <input id="name" name="name" placeholder="Juan Dela Cruz" required />
+          </div>
+          <div class="row" style="gap:12px">
+            <div style="flex:1">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" placeholder="09XX XXX XXXX" required />
+            </div>
+            <div style="flex:1">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="row" style="gap:12px">
+            <div style="flex:1">
+              <label for="brand">Brand</label>
+              <select id="brand" name="brand" required>
+                <option value="">Choose brand…</option>
+                <option>Apple</option>
+                <option>Samsung</option>
+                <option>Xiaomi</option>
+                <option>Oppo</option>
+                <option>Vivo</option>
+                <option>Huawei</option>
+                <option>Realme</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div style="flex:1">
+              <label for="model">Model</label>
+              <input id="model" name="model" placeholder="e.g., iPhone 13, Galaxy S22" required />
+            </div>
+          </div>
+          <div>
+            <label for="issue">Issue</label>
+            <select id="issue" name="issue" required>
+              <option value="">Select an issue…</option>
+              <option>Cracked Screen</option>
+              <option>Battery Problem</option>
+              <option>Charging Port</option>
+              <option>Water Damage</option>
+              <option>Camera</option>
+              <option>Speaker/Mic</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" name="notes" placeholder="Tell us what's going on"></textarea>
+          </div>
+          <button class="cta" type="submit">Get Free Quote</button>
+          <div class="note">We’ll text you within 10 minutes during business hours.</div>
+        </form>
+      </div>
+      <div class="panel">
+        <h2>Why ArcCell?</h2>
+        <div class="features">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2 2 7l10 5 10-5-10-5Zm0 7L2 4v13l10 5 10-5V4l-10 5Z"/></svg>
+            <div>
+              <strong>Lifetime workmanship warranty</strong>
+              <div class="fine">If our work fails, we fix it free.</div>
+            </div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 1a11 11 0 1 0 11 11A11.013 11.013 0 0 0 12 1Zm1 11V6h-2v8h7v-2Z"/></svg>
+            <div>
+              <strong>Most repairs under 1 hour</strong>
+              <div class="fine">Walk‑in friendly, no appointment needed.</div>
+            </div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 21.35 10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 6.01 4.01 4 6.5 4A5.5 5.5 0 0 1 12 6.09 5.5 5.5 0 0 1 17.5 4C19.99 4 22 6.01 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z"/></svg>
+            <div>
+              <strong>Data‑safe handling</strong>
+              <div class="fine">Your privacy is our priority.</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact" id="contact">
+          <div class="card">
+            <h3>Visit Us</h3>
+            <p>123 Tech Street, Barangay Central, Your City</p>
+          </div>
+          <div class="card">
+            <h3>Hours</h3>
+            <p>Mon–Sat: 10:00–19:00 • Sun: 11:00–17:00</p>
+          </div>
+          <div class="card">
+            <h3>Contact</h3>
+            <p>📞 <a href="tel:+639001234567">+63 900 123 4567</a><br/>✉️ <a href="mailto:hello@arccell.ph">hello@arccell.ph</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div class="row between" style="flex-wrap:wrap;gap:10px">
+        <div>© <span id="year"></span> ArcCell Mobile Repair. All rights reserved.</div>
+        <div>Made with ❤ in your neighborhood.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // simple quote handler (no backend required)
+    document.getElementById('quoteForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      const summary = `Thanks, ${data.name}!` +
+        `\n\nHere is your request summary:`+
+        `\nPhone: ${data.phone}`+
+        (data.email?`\nEmail: ${data.email}`:``)+
+        `\nDevice: ${data.brand} ${data.model}`+
+        `\nIssue: ${data.issue}`+
+        (data.notes?`\nNotes: ${data.notes}`:``)+
+        `\n\nWe will text you shortly with a quote.`;
+      alert(summary);
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
