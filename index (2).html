@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AR Cellphone Repair</title>
+  <meta name="description" content="AR Cellphone Repair – mabilis, maaasahan, at abot-kayang cellphone & tablet repair." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --yellow:#ffd400; /* bright yellow */
+      --red:#d62828;    /* bold red */
+      --dark:#1f1f1f;
+      --light:#ffffff;
+      --muted:#6b7280;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(135deg,var(--yellow) 0%, #ffef99 35%, #ffc300 60%, var(--red) 120%);color:var(--dark)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
+    .brand-logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--red),#ff6b6b);color:#fff;font-weight:800}
+    .nav a{font-weight:600}
+    .menu{display:flex;gap:1rem;align-items:center}
+    .menu a{padding:.5rem .8rem;border-radius:999px}
+    .cta{background:var(--red);color:white}
+    .burger{display:none;background:none;border:0;font-size:1.6rem}
+
+    /* Hero */
+    .hero{padding:5rem 0 3rem 0}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff2;backdrop-filter:blur(6px);border:1px solid rgba(0,0,0,.08);padding:.4rem .7rem;border-radius:999px;font-size:.85rem}
+    .title{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:.6rem 0;font-weight:800;color:#111}
+    .subtitle{font-size:1.1rem;color:#2b2b2b;max-width:60ch}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.1rem;border-radius:14px;border:2px solid rgba(0,0,0,.1);background:#fff;font-weight:700}
+    .btn.primary{background:var(--red);color:#fff;border-color:transparent}
+    .btn.outline{background:#fff}
+
+    /* Cards */
+    .grid{display:grid;gap:1.2rem}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.08);border-radius:18px;padding:1.1rem;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+    .card h3{margin:.2rem 0 .4rem 0}
+    .muted{color:var(--muted)}
+
+    /* Section */
+    section{padding:2.4rem 0}
+    section h2{font-size:1.8rem;margin:0 0 .6rem 0}
+
+    /* Price table */
+    .price{display:flex;justify-content:space-between;align-items:center;padding:.7rem 1rem;border-radius:12px;border:1px dashed rgba(0,0,0,.15);background:#fff}
+
+    /* Testimonials */
+    .review{display:flex;gap:.9rem;align-items:flex-start}
+    .avatar{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;border:1px solid rgba(0,0,0,.1)}
+
+    /* Footer */
+    footer{margin-top:2rem;padding:2rem 0;background:rgba(0,0,0,.75);color:#fdfdfd}
+    footer a{color:#fff}
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .menu{display:none;position:absolute;right:4%;top:64px;flex-direction:column;background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:.6rem;width:min(220px,90vw)}
+      .menu.open{display:flex}
+      .burger{display:block}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo">AR</div>
+        <div>
+          <div style="font-size:1.05rem">AR Cellphone Repair</div>
+          <div class="muted" style="font-size:.8rem">Mabilis • Maaasahan • Abot‑kaya</div>
+        </div>
+      </div>
+      <nav>
+        <button id="burger" class="burger" aria-label="Menu">☰</button>
+        <div id="menu" class="menu">
+          <a href="#services">Services</a>
+          <a href="#presyo">Presyo</a>
+          <a href="#bakitkami">Bakit Kami</a>
+          <a href="#contact" class="cta">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">📱 Certified Tech • Same‑Day Fix</span>
+        <h1 class="title">Quick fix para sa sira mong phone — sa <span style="background:linear-gradient(90deg,var(--red),#8a0404);-webkit-background-clip:text;background-clip:text;color:transparent">AR Cellphone Repair</span></h1>
+        <p class="subtitle">Screen/crack? Low batt? Water damage? Micro‑soldering? Sagot namin ‘yan. Gumagamit kami ng quality parts at malinaw na warranty.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="tel:+639059244374">📞 Tawag: +63 905 924 4374</a>
+          <a class="btn outline" href="https://wa.me/639059244374" target="_blank" rel="noopener">💬 Mag‑chat sa WhatsApp</a>
+          <a class="btn outline" href="#presyo">💡 Tingnan ang Presyo</a>
+        </div>
+        <ul class="muted" style="margin-top:1rem;line-height:1.8">
+          <li>🕒 Oras: L‑S 7:00 AM – 7:00 PM • Linggo 7:30 AM – 7:30 PM</li>
+          <li>📍 Lokasyon: JSP Building, 9109 Cay Pombo, Santa Maria, 3022 Bulacan</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="padding:0">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="Tech repairing a smartphone" style="border-radius:18px" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2>Mga Serbisyo</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>🔧 Screen Replacement</h3>
+          <p class="muted">OEM at high‑quality screens para sa iPhone, Samsung, Xiaomi, at iba pa.</p>
+        </div>
+        <div class="card">
+          <h3>🔋 Battery & Charging</h3>
+          <p class="muted">Battery replacement, charging port cleaning/replacement, power issues.</p>
+        </div>
+        <div class="card">
+          <h3>💧 Water Damage</h3>
+          <p class="muted">Board cleaning, diagnostics, at data recovery kung posible.</p>
+        </div>
+        <div class="card">
+          <h3>🎤 Camera / Speaker / Mic</h3>
+          <p class="muted">Kapag maingay, malabo, o walang tunog — ayusin natin.</p>
+        </div>
+        <div class="card">
+          <h3>🛠️ Micro‑soldering</h3>
+          <p class="muted">Advanced board repair para sa NO POWER, baseband, backlight at iba pa.</p>
+        </div>
+        <div class="card">
+          <h3>🗂️ Software & Unlock</h3>
+          <p class="muted">Flashing, FRP/ID assistance (legal/owner‑verified), OS troubleshoot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="presyo">
+    <div class="container">
+      <h2>Sample Presyo</h2>
+      <p class="muted">Tandaan: Depende sa model at kondisyon. Libreng check‑up at quote bago simulan.</p>
+      <div class="grid">
+        <div class="price"><strong>iPhone Screen (LCD)</strong><span>₱1,500 – ₱13,500</span></div>
+        <div class="price"><strong>Android Screen (common models)</strong><span>₱1,200 – ₱8,500</span></div>
+        <div class="price"><strong>Battery Replacement</strong><span>₱950 – ₱1,300</span></div>
+        <div class="price"><strong>Charging Port</strong><span>₱800 – ₱350-600</span></div>
+        <div class="price"><strong>Water Damage Cleaning</strong><span>₱200 – ₱1,500</span></div>
+        <div class="price"><strong>Board Repair (micro‑solder)</strong><span>Start ₱3,500-4,500</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="bakitkami">
+    <div class="container">
+      <h2>Bakit AR Cellphone Repair?</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>⚡ Mabilis</h3>
+          <p class="muted">Most repairs within the day para hindi ka off‑the‑grid.</p>
+        </div>
+        <div class="card">
+          <h3>✅ Warranty</h3>
+          <p class="muted">7 araw na warranty depende sa serbisyo at piyesa.</p>
+        </div>
+        <div class="card">
+          <h3>🧰 Quality Parts</h3>
+          <p class="muted">Trusted suppliers para tumagal ang ayos, hindi pansamantala.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section>
+    <div class="container">
+      <h2>Sabi ng Customers</h2>
+      <div class="grid">
+        <div class="card review">
+          <div class="avatar">👩</div>
+          <div>
+            <strong>Ana</strong>
+            <p class="muted">“Napabilis ang phone ko pagkatapos ng battery replacement. Malinaw ang paliwanag at maayos kausap.”</p>
+          </div>
+        </div>
+        <div class="card review">
+          <div class="avatar">👨</div>
+          <div>
+            <strong>Mark</strong>
+            <p class="muted">“Akala ko bibili na ako ng bago. Na‑repair pa pala ‘yung charging port — tipid!”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact & Lokasyon</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>📞 Tawag</h3>
+          <p><a href="tel:+639001234567"><strong>+63 900 123 4567</strong></a></p>
+          <h3>💬 Chat</h3>
+          <p><a href="https://wa.me/639001234567" target="_blank" rel="noopener">WhatsApp</a> • <a href="#">Facebook</a> • <a href="#">Messenger</a></p>
+          <h3>🕒 Oras</h3>
+          <p class="muted">Lunes–Sabado 9:00 AM – 7:00 PM<br>Linggo 10:00 AM – 5:00 PM</p>
+        </div>
+        <form class="card" onsubmit="event.preventDefault(); alert('Salamat! Tatawag kami para sa kumpirmasyon.');">
+          <h3>📅 Magpa‑Appointment</h3>
+          <label>Buong Pangalan<br><input required type="text" placeholder="Juan Dela Cruz" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px"></label><br><br>
+          <label>Contact Number<br><input required type="tel" placeholder="09xx xxx xxxx" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px"></label><br><br>
+          <label>Issue/Concern<br><textarea rows="3" placeholder="Hal. basag screen, di nag‑cha‑charge" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px"></textarea></label><br><br>
+          <button class="btn primary" type="submit">Submit</button>
+        </form>
+        <div class="card">
+          <h3>🗺️ Map</h3>
+          <p class="muted"></p>
+          <div style="aspect-ratio:16/10;background:#f7f7f7;border:1px solid #e5e7eb;border-radius:12px;display:grid;place-items:center"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30852.741174979896!2d120.96031376816453!3d14.848103107754582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ad0d63cf0115%3A0x6bb2bea71316155a!2sAR%20Cellphone%20Repair%20Shop!5e0!3m2!1sen!2sph!4v1756453476047!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center">
+      <div>© <span id="year"></span> AR Cellphone Repair • All rights reserved.</div>
+      <div>
+        <a href="tel:+639001234567" class="btn" style="background:#fff">📞 Tumawag Ngayon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu
+    document.getElementById('burger').addEventListener('click',()=>{
+      document.getElementById('menu').classList.toggle('open');
+    });
+    // year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
